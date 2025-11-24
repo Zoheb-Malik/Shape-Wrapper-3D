@@ -1,0 +1,5 @@
+{
+  "name": "ShapeWrapper 3D",
+  "description": "Interactive 3D shape viewer with custom texture uploads and AI-generated skins.",
+  "requestFramePermissions": []
+}
