@@ -27,14 +27,14 @@ const App: React.FC = () => {
       name,
       source: url ? (name === 'AI Generated' ? 'ai' : 'upload') : 'none'
     });
-    // Reset settings on new texture
+    // Reset settings on new texture, defaulting rotation to 180 degrees
     if (url) {
       setTextureSettings({
         offsetX: 0,
         offsetY: 0,
         repeatX: 1,
         repeatY: 1,
-        rotation: 0
+        rotation: Math.PI
       });
     }
   };

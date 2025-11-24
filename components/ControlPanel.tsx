@@ -365,7 +365,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 </div>
 
                  <button 
-                  onClick={() => onTextureSettingsChange({ offsetX: 0, offsetY: 0, repeatX: 1, repeatY: 1, rotation: 0 })}
+                  onClick={() => onTextureSettingsChange({ offsetX: 0, offsetY: 0, repeatX: 1, repeatY: 1, rotation: Math.PI })}
                   className="w-full py-1.5 text-[10px] font-medium text-slate-400 bg-slate-800 rounded hover:bg-slate-700 hover:text-white transition-colors"
                 >
                   Reset Adjustments

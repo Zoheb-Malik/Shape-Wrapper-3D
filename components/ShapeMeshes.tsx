@@ -25,6 +25,9 @@ const useTextureMaterial = (url: string | null, settings: TextureSettings) => {
     texture.center.set(0.5, 0.5); // Rotate around center
     texture.rotation = settings.rotation;
     
+    // Ensure correct color space interpretation for uploaded/generated images
+    texture.colorSpace = THREE.SRGBColorSpace;
+    
     // Notify Three.js that the texture properties have updated
     texture.needsUpdate = true;
   }, [texture, url, settings]);
@@ -39,7 +42,7 @@ const useTextureMaterial = (url: string | null, settings: TextureSettings) => {
     }
     return new THREE.MeshStandardMaterial({ 
       map: texture, 
-      roughness: 0.2,
+      roughness: 0.4, // Reduced glossiness to make texture colors more visible
       metalness: 0.1,
       side: THREE.DoubleSide
     });
@@ -122,17 +125,14 @@ export const HeartShape: React.FC<ShapeProps> = ({ textureUrl, textureSettings }
     geo.rotateX(Math.PI);
     
     // UV Mapping Fix for Extruded Geometry to better support wrapping
-    // This is a basic planar projection fix, more complex unwrapping would require external libs
     const posAttribute = geo.attributes.position;
     const uvAttribute = geo.attributes.uv;
     
     if (posAttribute && uvAttribute) {
        // Re-calculate UVs roughly based on position to ensure texture isn't just stretched
-       // (This is a simplification for the heart shape)
        for (let i = 0; i < posAttribute.count; i++) {
          const x = posAttribute.getX(i);
          const y = posAttribute.getY(i);
-         const z = posAttribute.getZ(i);
          // Simple box mapping logic or planar
          uvAttribute.setXY(i, (x / 3) + 0.5, (y / 3) + 0.5);
        }

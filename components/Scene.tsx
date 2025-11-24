@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stage, Environment, Html } from '@react-three/drei';
+import { OrbitControls, Stage, Html } from '@react-three/drei';
 import { ShapeType, TextureSettings, RotationSettings } from '../types';
 import { ShapeRenderer } from './ShapeMeshes';
 
@@ -25,10 +25,10 @@ const Scene: React.FC<SceneProps> = ({ currentShape, textureUrl, textureSettings
     <div className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800">
       <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 50 }}>
         <Suspense fallback={<Loader />}>
-          <Stage environment="city" intensity={0.5} adjustCamera={false}>
+          {/* Stage handles lighting and environment. Shadows disabled per request. */}
+          <Stage environment="city" intensity={0.6} adjustCamera={false} shadows={false}>
             <ShapeRenderer type={currentShape} textureUrl={textureUrl} textureSettings={textureSettings} />
           </Stage>
-          <Environment preset="studio" />
         </Suspense>
         <OrbitControls 
           makeDefault 
