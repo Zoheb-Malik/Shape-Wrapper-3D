@@ -2,6 +2,10 @@
 
 An interactive 3D platform where users can explore prebuilt shapes, apply custom textures (via upload or AI generation), and manipulate texture mapping in real-time.
 
+## Demo
+
+![ShapeWrapper3DQuickDemo](https://github.com/user-attachments/assets/bfd83f82-abca-4563-baec-9be9a17d7e24)
+
 ## Workflow
 
 1.  **Select a Shape**: The user clicks "Heart" from the sidebar. A 3D heart appears in the center, rotating slowly.
